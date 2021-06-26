@@ -1,0 +1,40 @@
+[tool.poetry]
+name = "fastapi-sample"
+version = "0.1.0"
+description = "Sample server program using FastAPI"
+authors = ["INAJIMA Daisuke <inajima@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+fastapi = "^0.65.2"
+poethepoet = "^0.10.0"
+uvicorn = "^0.14.0"
+
+[tool.poetry.dev-dependencies]
+black = "^21.6b0"
+flake8 = "^3.9.2"
+flake8-black = "^0.2.1"
+flake8-bugbear = "^21.4.3"
+flake8-isort = "^4.0.0"
+isort = "^5.9.1"
+mypy = "^0.910"
+pytest = "^5.2"
+
+[tool.poe.tasks]
+fmt = { shell = "isort fastapi_sample tests; black fastapi_sample tests" }
+lint = { shell = "flake8 fastapi_sample tests && mypy fastapi_sample tests"}
+start = "uvicorn --host 0.0.0.0 fastapi_sample:app"
+test = "pytest"
+
+[tool.isort]
+profile = "black"
+
+[tool.mypy]
+python_version = "3.9"
+strict = true
+implicit_reexport = true
+ignore_missing_imports = true
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
