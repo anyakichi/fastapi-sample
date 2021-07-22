@@ -1,0 +1,11 @@
+name: lint
+on: [push]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container: anyakichi/fastapi-sample-builder
+    steps:
+      - uses: actions/checkout@v2
+      - run: poetry install
+      - run: poetry run poe lint
+      - run: poetry run poe test
