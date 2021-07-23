@@ -3,7 +3,7 @@ on: [push]
 jobs:
   test:
     runs-on: ubuntu-latest
-    container: anyakichi/fastapi-sample-builder
+    container: anyakichi/fastapi-sample
     steps:
       - uses: actions/checkout@v2
       - run: poetry install
