@@ -28,7 +28,7 @@ Use with `docker-buildenv <https://github.com/anyakichi/docker-buildenv>`_
 Build, run or other operations from a container.  ::
 
   $ mkdir fastapi-sample-1 && cd $_
-  $ din anyakichi/fastapi-sample
+  $ din anyakichi/fastapi-sample:main
   builder@fastapi-sample-1:/build$ extract
   builder@fastapi-sample-1:/build$ build
   builder@fastapi-sample-1:/build$ run
@@ -39,13 +39,13 @@ Build, run or other operations from a container.  ::
 
 Or from your host machine. ::
 
-  $ din anyakichi/fastapi-sample extract
+  $ din anyakichi/fastapi-sample:main extract
   $ cd fastapi-sample
-  $ din anyakichi/fastapi-sample build
-  $ din anyakichi/fastapi-sample run
-  $ din anyakichi/fastapi-sample poetry poe test
-  $ din anyakichi/fastapi-sample poetry poe fmt
-  $ din anyakichi/fastapi-sample poetry poe lint
+  $ din anyakichi/fastapi-sample:main build
+  $ din anyakichi/fastapi-sample:main run
+  $ din anyakichi/fastapi-sample:main poetry poe test
+  $ din anyakichi/fastapi-sample:main poetry poe fmt
+  $ din anyakichi/fastapi-sample:main poetry poe lint
 
 
 Run the server using pre-built Docker image
@@ -53,4 +53,4 @@ Run the server using pre-built Docker image
 
 ::
 
-  $ docker run -d --name fastapi-sample anyakichi/fastapi-sample run -y
+  $ docker run -p 8000:8000 --rm -it anyakichi/fastapi-sample:main run -y
