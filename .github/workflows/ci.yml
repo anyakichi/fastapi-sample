@@ -1,9 +1,9 @@
-name: lint
+name: CI
 on: [push]
 jobs:
   test:
     runs-on: ubuntu-latest
-    container: anyakichi/fastapi-sample
+    container: ghcr.io/anyakichi/fastapi-sample:main
     steps:
       - uses: actions/checkout@v2
       - run: poetry install
