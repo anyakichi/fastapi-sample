@@ -1,0 +1,20 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: example
+  app:
+    image: anyakichi/poetry-builder:3.9
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/build
+    working_dir: /build
+    environment:
+      DEFAULT_SCRIPT: poe start
+    command: wait-for-it db:5432 -- buildenv run -y
