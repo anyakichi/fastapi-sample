@@ -6,7 +6,7 @@ services:
     environment:
       POSTGRES_PASSWORD: example
   app:
-    image: anyakichi/poetry-builder:3.9
+    image: anyakichi/poetry-builder:3.10
     restart: always
     depends_on:
       - db

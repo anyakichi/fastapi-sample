@@ -1,4 +1,4 @@
-FROM anyakichi/poetry-builder:3.9-full
+FROM anyakichi/poetry-builder:3.10-full
 
 ENV \
   DEFAULT_SCRIPT="poe start" \
