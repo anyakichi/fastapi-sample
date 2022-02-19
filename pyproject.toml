@@ -5,21 +5,19 @@ description = "Sample server program using FastAPI"
 authors = ["INAJIMA Daisuke <inajima@gmail.com>"]
 
 [tool.poetry.dependencies]
-docformatter = "^1.4"
-fastapi = "^0.65.2"
-poethepoet = "^0.10.0"
+fastapi = "^0.74"
+poethepoet = "^0.12"
 python = "^3.10"
-uvicorn = "^0.14.0"
+uvicorn = "^0.17"
 
 [tool.poetry.dev-dependencies]
-black = "^21.6b0"
-flake8 = "^3.9.2"
-flake8-black = "^0.2.1"
-flake8-bugbear = "^21.4.3"
-flake8-isort = "^4.0.0"
+black = "^22.1"
+docformatter = "^1.4"
+flake8 = "^4.0"
+flake8-bugbear = "^22.1"
 isort = "^5.9.1"
-mypy = "^0.910"
-pytest = "^5.2"
+mypy = "^0.931"
+pytest = "^7.0"
 
 [tool.poe.env]
 LINT_TARGETS = "fastapi_sample tests"
@@ -47,6 +45,20 @@ python_version = "3.10"
 strict = true
 implicit_reexport = true
 ignore_missing_imports = true
+
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
+
+typeCheckingMode = "strict"
+reportMissingTypeStubs = "none"
+reportUnknownArgumentType = "none"
+reportUnknownLambdaType = "none"
+reportUnknownMemberType = "none"
+reportUnknownParameterType = "none"
+reportUnknownVariableType = "none"
+reportUnnecessaryIsInstance = "none"
+reportUntypedFunctionDecorator = "none"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
