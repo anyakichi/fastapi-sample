@@ -5,9 +5,10 @@ description = "Sample server program using FastAPI"
 authors = ["INAJIMA Daisuke <inajima@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+docformatter = "^1.4"
 fastapi = "^0.65.2"
 poethepoet = "^0.10.0"
+python = "^3.9"
 uvicorn = "^0.14.0"
 
 [tool.poetry.dev-dependencies]
@@ -20,9 +21,21 @@ isort = "^5.9.1"
 mypy = "^0.910"
 pytest = "^5.2"
 
+[tool.poe.env]
+LINT_TARGETS = "fastapi_sample tests"
+
 [tool.poe.tasks]
-fmt = { shell = "isort fastapi_sample tests; black fastapi_sample tests" }
-lint = { shell = "flake8 fastapi_sample tests && mypy fastapi_sample tests"}
+fmt-black = "black $LINT_TARGETS"
+fmt-docformatter = "docformatter -ri $LINT_TARGETS"
+fmt-isort = "isort $LINT_TARGETS"
+lint-black = "black --check --diff $LINT_TARGETS"
+lint-docformatter = "docformatter -rc $LINT_TARGETS"
+lint-flake8 = "flake8 $LINT_TARGETS"
+lint-isort = "isort --check --diff $LINT_TARGETS"
+lint-mypy = "mypy $LINT_TARGETS"
+lint-pyright = "pyright $LINT_TARGETS"
+fmt = ["fmt-isort", "fmt-black", "fmt-docformatter"]
+lint = ["lint-pyright", "lint-mypy", "lint-flake8", "lint-docformatter", "lint-black", "lint-isort"]
 start = "uvicorn --host 0.0.0.0 fastapi_sample:app"
 test = "pytest"
 
