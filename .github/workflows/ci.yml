@@ -35,6 +35,6 @@ jobs:
     container: ghcr.io/anyakichi/fastapi-sample:main
     steps:
       - uses: actions/checkout@v2
-      - run: poetry install
-      - run: poetry run poe lint
-      - run: poetry run poe test
+      - run: buildenv build -y
+      - run: buildenv lint -y
+      - run: buildenv test -y

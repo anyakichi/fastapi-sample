@@ -1,5 +1,7 @@
 FROM anyakichi/poetry-builder:3.10-full
 
+COPY buildenv.d/ /etc/buildenv.d/
+
 ENV \
   DEFAULT_SCRIPT="poe start" \
   GIT_REPO=https://github.com/anyakichi/fastapi-sample.git
