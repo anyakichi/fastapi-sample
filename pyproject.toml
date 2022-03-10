@@ -37,7 +37,7 @@ lint-pyright = "pyright $LINT_TARGETS"
 fmt = ["fmt-isort", "fmt-black", "fmt-docformatter"]
 lint = ["lint-pyright", "lint-mypy", "lint-flake8", "lint-docformatter", "lint-black", "lint-isort"]
 start = "uvicorn --host 0.0.0.0 fastapi_sample:app"
-test = "pytest --cov=fastapi_sample"
+test = "pytest"
 
 [tool.isort]
 profile = "black"
@@ -61,6 +61,9 @@ reportUnknownParameterType = "none"
 reportUnknownVariableType = "none"
 reportUnnecessaryIsInstance = "none"
 reportUntypedFunctionDecorator = "none"
+
+[tool.pytest.ini_options]
+addopts = "--doctest-modules --cov=fastapi_sample"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
